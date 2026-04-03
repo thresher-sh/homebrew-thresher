@@ -3,8 +3,8 @@ class Thresher < Formula
 
   desc "AI-powered supply chain security scanner for open source packages"
   homepage "https://github.com/thresher-sh/thresher"
-  url "https://github.com/thresher-sh/thresher/archive/refs/tags/v0.2.0-alpha.tar.gz"
-  sha256 "1018354488eac62d84d73522d716ee025740e2eba11d8fd9fe44d298334dd2fb"
+  url "https://github.com/thresher-sh/thresher/archive/refs/tags/v0.2.1-alpha.tar.gz"
+  sha256 "70ff39aab258cb10488d86704682c2d31c08d6aa846f216f41c55ef60641e241"
   license "MIT"
 
   depends_on "libyaml"
@@ -33,6 +33,15 @@ class Thresher < Formula
 
   def install
     virtualenv_install_with_resources
+
+    # Install data directories that the Python package references at runtime
+    # (lima template, VM provisioning scripts, scanner rules, Docker context).
+    # The Python code looks for these under sys.prefix/share/thresher/.
+    pkgshare = libexec/"share"/"thresher"
+    (pkgshare/"lima").install "lima/thresher.yaml"
+    pkgshare.install "vm_scripts"
+    pkgshare.install "rules"
+    pkgshare.install "docker"
   end
 
   def caveats
