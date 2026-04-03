@@ -3,8 +3,8 @@ class Thresher < Formula
 
   desc "AI-powered supply chain security scanner for open source packages"
   homepage "https://github.com/thresher-sh/thresher"
-  url "https://github.com/thresher-sh/thresher/archive/refs/tags/v0.2.1-alpha.tar.gz"
-  sha256 "70ff39aab258cb10488d86704682c2d31c08d6aa846f216f41c55ef60641e241"
+  url "https://github.com/thresher-sh/thresher/archive/refs/tags/v0.2.2.tar.gz"
+  sha256 "19791a2d567e79e9298de740519ca9442615f6ddc50cfc2b14d095393c62c905"
   license "MIT"
 
   depends_on "libyaml"
